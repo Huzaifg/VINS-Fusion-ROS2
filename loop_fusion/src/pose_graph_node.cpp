@@ -103,7 +103,7 @@ void new_sequence()
 
 void image_callback(const sensor_msgs::msg::Image::SharedPtr image_msg)
 {
-    //ROS_INFO("image_callback!");
+    // ROS_INFO("image_callback!");
     m_buf.lock();
     image_buf.push(image_msg);
     m_buf.unlock();
@@ -123,7 +123,7 @@ void image_callback(const sensor_msgs::msg::Image::SharedPtr image_msg)
 
 void point_callback(const sensor_msgs::msg::PointCloud::SharedPtr point_msg)
 {
-    //ROS_INFO("point_callback!");
+    // ROS_INFO("point_callback!");
     m_buf.lock();
     point_buf.push(point_msg);
     m_buf.unlock();
@@ -179,7 +179,7 @@ void margin_point_callback(const sensor_msgs::msg::PointCloud::SharedPtr point_m
 
 void pose_callback(const nav_msgs::msg::Odometry::SharedPtr pose_msg)
 {
-    //ROS_INFO("pose_callback!");
+    // ROS_INFO("pose_callback!");
     m_buf.lock();
     pose_buf.push(pose_msg);
     m_buf.unlock();
@@ -297,7 +297,7 @@ void process()
 
         if (pose_msg != NULL)
         {
-            //printf(" pose time %f \n", pose_msg->header.stamp.sec);
+            // printf(" pose time %f \n", pose_msg->header.stamp.sec);
             //printf(" point time %f \n", point_msg->header.stamp.sec);
             //printf(" image time %f \n", image_msg->header.stamp.sec);
             // skip fisrt few
@@ -370,7 +370,6 @@ void process()
 
                     //printf("u %f, v %f \n", p_2d_uv.x, p_2d_uv.y);
                 }
-
                 KeyFrame* keyframe = new KeyFrame(pose_msg->header.stamp.sec + pose_msg->header.stamp.nanosec * (1e-9), frame_index, T, R, image,
                                    point_3d, point_2d_uv, point_2d_normal, point_id, sequence);   
                 m_process.lock();
@@ -446,12 +445,14 @@ int main(int argc, char **argv)
     COL = fsSettings["image_width"];
 
     // referred from: https://answers.ros.org/question/288501/ros2-equivalent-of-rospackagegetpath/
-    std::string pkg_path = ament_index_cpp::get_package_share_directory("loop_fusion");
-    string vocabulary_file = pkg_path + "/../support_files/brief_k10L6.bin";
+    // TODO: Need to update the path, there might be some missing pieces in plumbing...
+    std::string pkg_path = ament_index_cpp::
+    get_package_share_directory("loop_fusion");
+    string vocabulary_file = pkg_path + "/support_files/brief_k10L6.bin";
     cout << "vocabulary_file" << vocabulary_file << endl;
     posegraph.loadVocabulary(vocabulary_file);
 
-    BRIEF_PATTERN_FILE = pkg_path + "/../support_files/brief_pattern.yml";
+    BRIEF_PATTERN_FILE = pkg_path + "/support_files/brief_pattern.yml";
     cout << "BRIEF_PATTERN_FILE" << BRIEF_PATTERN_FILE << endl;
 
     int pn = config_file.find_last_of('/');

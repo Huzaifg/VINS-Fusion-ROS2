@@ -41,8 +41,9 @@ void registerPub(rclcpp::Node::SharedPtr n)
     pub_key_poses = n->create_publisher<visualization_msgs::msg::Marker>("key_poses", 1000);
     pub_camera_pose = n->create_publisher<nav_msgs::msg::Odometry>("camera_pose", 1000);
     pub_camera_pose_visual = n->create_publisher<visualization_msgs::msg::MarkerArray>("camera_pose_visual", 1000);
-    pub_keyframe_pose = n->create_publisher<nav_msgs::msg::Odometry>("keyframe_pose", 1000);
-    pub_keyframe_point = n->create_publisher<sensor_msgs::msg::PointCloud>("keyframe_point", 1000);
+    // TODO: The following two publisher setup is missing "vins_estimator", not sure why the previous version disconnect from loop closure by the topic name.
+    pub_keyframe_pose = n->create_publisher<nav_msgs::msg::Odometry>("/vins_estimator/keyframe_pose", 1000);
+    pub_keyframe_point = n->create_publisher<sensor_msgs::msg::PointCloud>("/vins_estimator/keyframe_point", 1000);
     pub_extrinsic = n->create_publisher<nav_msgs::msg::Odometry>("extrinsic", 1000);
     pub_image_track = n->create_publisher<sensor_msgs::msg::Image>("image_track", 1000);
 
