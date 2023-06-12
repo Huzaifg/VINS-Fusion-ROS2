@@ -473,7 +473,7 @@ void pubKeyframe(const Estimator &estimator)
         Quaterniond R = Quaterniond(estimator.Rs[i]);
 
         nav_msgs::msg::Odometry odometry;
-        odometry.header.stamp = rclcpp::Time(estimator.Headers[WINDOW_SIZE - 2]);
+        odometry.header.stamp = rclcpp::Time(estimator.Headers[WINDOW_SIZE - 2] * 1e9);
         odometry.header.frame_id = "world";
         odometry.pose.pose.position.x = P.x();
         odometry.pose.pose.position.y = P.y();
@@ -488,7 +488,7 @@ void pubKeyframe(const Estimator &estimator)
 
 
         sensor_msgs::msg::PointCloud point_cloud;
-        point_cloud.header.stamp = rclcpp::Time(estimator.Headers[WINDOW_SIZE - 2]);
+        point_cloud.header.stamp = rclcpp::Time(estimator.Headers[WINDOW_SIZE - 2] * 1e9);
         point_cloud.header.frame_id = "world";
         for (auto &it_per_id : estimator.f_manager.feature)
         {
