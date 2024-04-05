@@ -5,12 +5,12 @@ camera_name: camera
 image_width: 1280
 image_height: 720
 distortion_parameters:
-   k1: 0.0
-   k2: 0.0
-   p1: 0.0
-   p2: 0.0
+   k1: 6.05585321e-04
+   k2: 1.78362515e-03
+   p1: -6.06947261e-05
+   p2: 4.11475246e-04
 projection_parameters:
-   gamma1: 369.504
-   gamma2: 369.504
-   u0: 640
-   v0: 360
+   gamma1: 959.6900
+   gamma2: 959.6471
+   u0: 639.8943
+   v0: 359.3206
