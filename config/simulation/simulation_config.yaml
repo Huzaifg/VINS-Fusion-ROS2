@@ -5,8 +5,8 @@ imu: 1
 num_of_cam: 2  # 1 or 2
 
 imu_topic: "/ARTcar/imu"
-image0_topic: "/ARTcar/left_camera"
-image1_topic: "/ARTcar/right_camera"
+image0_topic: "/ARTcar/left_camera_flipped"
+image1_topic: "/ARTcar/right_camera_flipped"
 output_path: "/sbel/Desktop"
 
 cam0_calib: "cam0_chrono.yaml"
