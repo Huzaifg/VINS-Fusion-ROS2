@@ -489,7 +489,7 @@ PinholeCamera::liftProjective(const Eigen::Vector2d& p, Eigen::Vector3d& P) cons
         else
         {
             // Recursive distortion model
-            int n = 8;
+            int n = 1;
             Eigen::Vector2d d_u;
             distortion(Eigen::Vector2d(mx_d, my_d), d_u);
             // Approximate value

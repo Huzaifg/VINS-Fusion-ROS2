@@ -9,6 +9,10 @@ distortion_parameters:
    k2: 1.78362515e-03
    p1: -6.06947261e-05
    p2: 4.11475246e-04
+   # k1: 0
+   # k2: 0
+   # p1: 0
+   # p2: 0
 projection_parameters:
    gamma1: 959.6900
    gamma2: 959.6471

@@ -454,7 +454,7 @@ void FeatureTracker::drawTrack(const cv::Mat &imLeft, const cv::Mat &imRight,
     else
         imTrack = imLeft.clone();
     cv::cvtColor(imTrack, imTrack, cv::COLOR_GRAY2RGB);
-
+    std::cout << "Left pts size " <<  curLeftPts.size() << std::endl;
     for (size_t j = 0; j < curLeftPts.size(); j++)
     {
         double len = std::min(1.0, 1.0 * track_cnt[j] / 20);
@@ -462,6 +462,7 @@ void FeatureTracker::drawTrack(const cv::Mat &imLeft, const cv::Mat &imRight,
     }
     if (!imRight.empty() && stereo_cam)
     {
+        std::cout << "Right pts size " <<  curRightPts.size() << std::endl;
         for (size_t i = 0; i < curRightPts.size(); i++)
         {
             cv::Point2f rightPt = curRightPts[i];
@@ -492,8 +493,9 @@ void FeatureTracker::drawTrack(const cv::Mat &imLeft, const cv::Mat &imRight,
     */
     //printf("predict pts size %d \n", (int)predict_pts_debug.size());
 
-    //cv::Mat imCur2Compress;
-    //cv::resize(imCur2, imCur2Compress, cv::Size(cols, rows / 2));
+    // Print the image
+    // cv::imshow("Track Image", imTrack);
+    // cv::waitKey(0);
 }
 
 

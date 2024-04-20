@@ -545,6 +545,10 @@ void Estimator::processImage(const map<int, vector<pair<int, Eigen::Matrix<doubl
                 updateLatestStates();
                 solver_flag = NON_LINEAR;
                 slideWindow();
+                cout << "Ps: " << endl;
+                for (int i = 0; i <= WINDOW_SIZE; i++) {
+                    cout << Ps[i].transpose() << endl;
+                }
                 ROS_INFO("Initialization finish!");
             }
         }
